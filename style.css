@@ -72,3 +72,21 @@ button:hover {
     font-size: 14px;
     text-align: center;
 }
+
+
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+  }
+
+.header a {
+    text-decoration: none;
+    color: #000000;
+    background-color: rgb(10, 158, 94);
+  }
+
+.member-button{
+   background-color: rgb(21, 229, 69);
+   color: #000000;
+}
