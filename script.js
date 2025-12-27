@@ -52,20 +52,36 @@ form.addEventListener("submit", function (e) {
         return;
     }
 
-    const newMember = new TeamMember(
-        firstName,
-        lastName,
-        jobPost,
-        username,
-        email,
-        password,
-        picture
-    );
+    const reader = new FileReader();
 
-    let members = JSON.parse(localStorage.getItem("teamMembers")) || [];
-    members.push(newMember);
-    localStorage.setItem("teamMembers", JSON.stringify(members));
+    const saveMember = (pictureData) => {
+        const newMember = new TeamMember(
+            firstName,
+            lastName,
+            jobPost,
+            username,
+            email,
+            password,
+            pictureData
+        );
 
-    alert("Member added successfully!");
-    form.reset();
+        let members = JSON.parse(localStorage.getItem("teamMembers")) || [];
+        members.push(newMember);
+        localStorage.setItem("teamMembers", JSON.stringify(members));
+
+        alert("Member added successfully!");
+        form.reset();
+    };
+
+    if (picture) {
+        reader.readAsDataURL(picture);
+        reader.onload = function () {
+            saveMember(reader.result);
+        };
+        reader.onerror = function () {
+            alert("Error reading file");
+        };
+    } else {
+        saveMember(""); 
+    }
 });
