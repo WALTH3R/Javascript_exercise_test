@@ -90,3 +90,7 @@ button:hover {
    background-color: rgb(21, 229, 69);
    color: #000000;
 }
+
+.buttons{
+    margin-top: 15px;
+}
